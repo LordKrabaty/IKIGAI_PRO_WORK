@@ -145,28 +145,3 @@ def ask_for_yn(yn_question: str, positive: str, negative: str, msg_error: str) -
             return False
         
         print(msg_error)
-
-
-def random_advices(advice1: str, advice2: str, advice3: str, advice4: str) -> str:
-    """Returns a random piece of advice from four options.
-
-    Args:
-        advice1 (str): The first advice option.
-        advice2 (str): The second advice option.
-        advice3 (str): The third advice option.
-        advice4 (str): The fourth advice option.
-
-    Returns:
-        str: A randomly selected advice string.
-    """
-    from random import randrange
-    advice = randrange(1, 5)
-
-    if advice == 1:
-        return advice1
-    elif advice == 2:
-        return advice2
-    elif advice == 3:
-        return advice3
-    elif advice == 4:
-        return advice4

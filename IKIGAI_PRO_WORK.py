@@ -191,9 +191,10 @@ temp_advice = '{adv}\n   - {plus}'  # Template for displaying each piece of advi
 while give_random:
     random_ask = True
     if random_ask:
+        import random
         give_random = True
         text_advice = '   Just a random check:'
-        random_advice = ikidef.random_advices(msg_try_good, msg_try_love, msg_try_money, msg_try_world)
+        random_advice = random.choice([msg_try_good, msg_try_love, msg_try_money, msg_try_world])
         print(random_advice, end=" ")
         text_advice = temp_advice.format(adv=text_advice, plus=random_advice)
         random_ask = ikidef.ask_for_yn(ask_random_again, positive, negative, msg_error)

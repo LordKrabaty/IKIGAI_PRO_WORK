@@ -43,26 +43,6 @@ def test_true_or_not():
         ikidef.true_or_not('five', 'five')
 
 
-def test_random_advices():
-    """Test the random_advices function."""
-    random_test = ikidef.random_advices('A', 'B', 'C', 'D')
-
-    while random_test != 'A':
-        random_test = ikidef.random_advices('A', 'B', 'C', 'D')
-    assert random_test == 'A'
-
-    while random_test != 'B':
-        random_test = ikidef.random_advices('A', 'B', 'C', 'D')
-    assert random_test == 'B'
-
-    while random_test != 'C':
-        random_test = ikidef.random_advices('A', 'B', 'C', 'D')
-    assert random_test == 'C'
-
-    while random_test != 'D':
-        random_test = ikidef.random_advices('A', 'B', 'C', 'D')
-    assert random_test == 'D'
-
 
 ###################### DRAW #######################################
 

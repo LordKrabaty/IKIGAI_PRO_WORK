@@ -110,6 +110,81 @@ def ask_for_number(question: str, value_min: float, value_max: float) -> float:
             print(msg_limit)  # Notify the user if the value is out of range.
 
 
+def get_sum_avg_min(data: list | tuple) -> tuple[float, float, float]:
+    """
+    Calculates the sum, average, and minimum value from a list or tuple of numbers.
+
+    Args:
+        data (list | tuple): A list or tuple containing numeric values.
+
+    Returns:
+        tuple[float, float, float]: A tuple containing the sum, average, and minimum value.
+
+    Raises:
+        ValueError: If the input is not a list or tuple, or if it contains non-numeric elements.
+        ValueError: If the input list or tuple is empty.
+    """
+    from statistics import mean
+
+    # Validate that the input is either a list or tuple
+    if not isinstance(data, (list, tuple)):
+        raise ValueError("Input must be a list or tuple of numbers.")
+
+    # Ensure the input is not empty
+    if not data:
+        raise ValueError("Input list or tuple cannot be empty.")
+
+    # Verify that all elements in the input are numeric
+    if not all(isinstance(item, (int, float)) for item in data):
+        raise ValueError("All elements in the input must be numeric.")
+
+    # Perform calculations: sum, average, and minimum
+    data_sum = sum(data)
+    data_avr = mean(data)  
+    data_min = min(data)  
+
+    return data_sum, data_avr, data_min
+
+def consecutive_and_circular_averages(datalist: list| tuple) -> list:
+    """
+    Calculates the averages between every two consecutive elements in a tuple.
+
+    Args:
+        datalist (list or tuple): Input tuple containing any number of numeric elements.
+
+    Returns:
+        list: A list of averages between consecutive elements.
+    """
+    from statistics import mean
+
+    # Return an empty list if the tuple is too short to calculate averages
+    if len(datalist) < 2:
+        return []
+
+    # Initialize an empty list to store the averages
+    averages = []
+
+    # Iterate through the tuple to calculate averages of consecutive elements
+    for i in range(len(datalist) - 1):
+        # Take two consecutive elements
+        first_element = datalist[i]
+        second_element = datalist[i + 1]
+
+        # Calculate their average and append the result to the averages list
+        average = mean((first_element, second_element))
+        averages.append(average)
+
+    # Calculate the circular average (last element + first element) + append
+    last_element = datalist[-1]
+    first_element = datalist[0]
+    circular_average = mean((last_element, first_element))
+    averages.append(circular_average)
+
+    return averages
+
+
+
+
 def true_or_not(value: float, min_true: float) -> bool:
     """Determines if the value is greater than or equal to a specified minimum threshold.
 
